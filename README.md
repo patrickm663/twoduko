@@ -13,7 +13,7 @@ This version is a CLI implementation. **Further work is required to pretty-print
 ## Rules
 TwoDuko is played on an empty 4x4 grid. Players take turns playing numbers between 1-4 into the grid. A move is considered legal if there are no repetitions in the horizontal, vertical, or 2x2 subgrid.
 
-![image](https://github.com/patrickm663/twoduko/assets/77886027/98f06329-762c-4713-a006-60aad53dc722)
+![image](https://github.com/patrickm663/twoduko/assets/77886027/c39d436d-9ce8-43bb-841f-45a9022c55fd)
 
 Players win when their opponent cannot make a legal move, or there are no empty spaces remaining.
 
