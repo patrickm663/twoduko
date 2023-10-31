@@ -4,11 +4,37 @@ TwoDuko is a two player Suduko-like game where players take turns playing moves 
 This version is a CLI implementation. **Further work is required to pretty-print the grid and have it adapt correctly to nxm boards.**
 
 ## How to Install
+To build and run from source:
 
-1. Ensure [Dub](https://dub.pm/getting_started.html) is installed
+1. Ensure D and [Dub](https://dub.pm/getting_started.html) is installed
 2. Clone and enter the repo
-3. Build using `dub build` (alternatively, `dub build --build=release`.
-4. Run `./twoduko` (the binary executable), or just run `dub run`
+3. Build using Dub 
+```
+dub build
+```
+
+Alternatively, 
+```
+dub build --build=release
+```
+
+4. Run the binary executable
+
+```
+./twoduko
+```
+
+Alternatively, the game can be played via a Docker container.
+
+1. Build the container image
+```
+docker build -t twoduko .
+```
+
+2. Run the container
+```
+docker run -ti --rm twoduko:latest
+```
 
 ## Rules
 TwoDuko is played on an empty 4x4 grid. Players take turns playing numbers between 1-4 into the grid. A move is considered legal if there are no repetitions in the horizontal, vertical, or 2x2 subgrid.
@@ -19,7 +45,7 @@ Players win when their opponent cannot make a legal move, or there are no empty 
 
 ## TODO
 - [ ] Pretty-print the gameboard
-- [ ] Add a Dockerfile so Dub isn't a requirement
+- [x] Add a Dockerfile so Dub isn't a requirement
 - [ ] Colour-code player moves to make it easier to track
 - [ ] Update the board printout logic to support nxm grids
 - [ ] Begin work on an 'AI' that doesn't just make random moves
