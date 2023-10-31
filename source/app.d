@@ -1,5 +1,4 @@
 import std.conv;
-import std.datetime;
 import std.math;
 import std.random;
 import std.stdio;
@@ -214,15 +213,6 @@ class twoduko {
 	}
       }
       writeln();
-      /*
-      for(int i = 0; i < this.x; i++){
-	for(int j = 0; j < this.y; j++){
-	  this.board[i][j].write();
-	  " ".write();
-	}
-	writeln();
-      }
-      */
     }
 
 }
