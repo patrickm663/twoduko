@@ -1,0 +1,9 @@
+{
+	"authors": [
+		"Patrick Moehrke"
+	],
+	"copyright": "Copyright © 2023, Patrick Moehrke",
+	"description": "A two player Suduko game, playable in the CLI.",
+	"license": "MIT",
+	"name": "twoduko"
+}
