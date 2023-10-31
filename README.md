@@ -5,7 +5,7 @@ This version is a CLI implementation. **Further work is required to pretty-print
 
 ## How to Install
 
-1. Ensure (Dub)[https://dub.pm/getting_started.html] is installed
+1. Ensure [Dub](https://dub.pm/getting_started.html) is installed
 2. Clone and enter the repo
 3. Build using `dub build` (alternatively, `dub build --build=release`.
 4. Run `./twoduko` (the binary executable), or just run `dub run`
@@ -19,6 +19,7 @@ Players win when their opponent cannot make a legal move, or there are no empty 
 
 ## TODO
 - [ ] Pretty-print the gameboard
+- [ ] Add a Dockerfile so Dub isn't a requirement
 - [ ] Colour-code player moves to make it easier to track
 - [ ] Update the board printout logic to support nxm grids
 - [ ] Begin work on an 'AI' that doesn't just make random moves
