@@ -26,3 +26,6 @@ jobs:
       run: |
         # Build the project, with its main file included, without unittests
         dub build --compiler=$DC
+
+        # Perform linting
+        dub lint
