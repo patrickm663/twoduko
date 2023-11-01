@@ -1,10 +1,27 @@
+/**
+  * Author: Patrick Moehrke
+  * License: MIT
+*/
+
 import std.conv;
 import std.math;
 import std.random;
 import std.stdio;
 import std.string;
 
-class twoduko {
+/**
+  * TwoDuko is a two player game where players begin with
+  * an empty grid and take turns filling a grid that
+  * abides by Suduko rules.
+  *
+  * The game is initialised as follows:
+  * -----------------------------------------------------
+  * my_game = new Twoduko(4, 4);
+  * my_game.play_game();
+  * -----------------------------------------------------
+*/
+
+class Twoduko {
   private:
     bool is_complete;
     bool is_valid;
@@ -15,10 +32,19 @@ class twoduko {
     const int sq_y;
     auto rng = Random();
 
+    /**
+      * Updates the game board with a move
+      * Returns: nothing
+    */
     void play_move(int p_move, int x_move, int y_move) {
       this.board[x_move][y_move] = p_move;
     }
 
+    /**
+      * Checks whether a move is valid in the horizontal
+      * direction
+      * Returns: true if valid
+    */
     bool horizontal_valid(int p_move, int x_move) {
       for(int j = 0; j < this.y; j++) {
 	if (p_move == this.board[x_move][j]) {
@@ -28,6 +54,11 @@ class twoduko {
       return(true);
     }
 
+    /**
+      * Checks whether a move is valid in the vertical
+      * direction
+      * Returns: true if valid
+    */
     bool vertical_valid(int p_move, int y_move) {
       for(int i = 0; i < this.x; i++) {
 	if (p_move == this.board[i][y_move]) {
@@ -37,6 +68,10 @@ class twoduko {
       return(true);
     }
 
+    /**
+      * Checks whether a move is valid in its subgrid
+      * Returns: true if valid
+    */
     bool grid_valid(int p_move, int x_move, int y_move) {
       const int start_grid_x = x_move - (x_move % this.sq_x);
       const int end_grid_x = start_grid_x + (this.sq_x - 1);
@@ -53,6 +88,10 @@ class twoduko {
       return(true);
     }
 
+    /**
+      * Checks whether the grid has any valid moves left
+      * Returns: true if the game is over
+    */
     bool check_is_complete() {
       for(int i = 0; i < this.x; i++){
 	for(int j = 0; j < this.y; j++){
@@ -70,6 +109,11 @@ class twoduko {
       return(this.is_complete);
     }
 
+    /**
+      * Checks whether a move is valid ito board size and abides
+      * by the rules of Suduko
+      * Returns: true if valid
+    */
     bool is_valid_move(int p_move, int x_move, int y_move) {
       if (0 < p_move && p_move <= this.x && 0 <= x_move && x_move < this.x && 0 <= y_move && y_move <= this.y) {
 	if(this.board[x_move][y_move] == 0 
@@ -82,6 +126,12 @@ class twoduko {
       return(false);
     }
 
+    /**
+      * Prompts the player to play a move via user input
+      * Catches non-numeric input and prompts the player
+      * to re-enter
+      * Returns: nothing
+    */
     void set_player_move() {
       int x_move;
       int y_move;
@@ -106,6 +156,10 @@ class twoduko {
       }
     }
 
+    /**
+      * Plays a random, valid CPU move
+      * Returns: nothing
+    */
     void set_cpu_move() {
       int x_move = -1; 
       int y_move = -1; 
@@ -118,7 +172,10 @@ class twoduko {
 	this.play_move(play, x_move, y_move);
     }
 
-
+    /**
+      * Pretty-prints the game board
+      * Returns: nothing
+    */
     void display_board() {
       string board_string;
       for(int r = -1; r < this.x; r++) {
@@ -165,7 +222,14 @@ class twoduko {
     }
 
   public:
-    
+    /**
+      * Initialises the game and creates a blank x by y
+      * game board
+      * ----------------------------------------------
+      * my_game = new Twoduko(4, 4);
+      * ----------------------------------------------
+      * Returns: nothing
+    */
     this(int x, int y) {
       this.x = x;
       this.y = y;
@@ -176,6 +240,14 @@ class twoduko {
       this.board = new int[][](this.x, this.y);
     }
 
+    /**
+      * Begins the game cycle until complete or the 
+      * player manually exits
+      * ----------------------------------------------
+      * my_game.play_game();
+      * ----------------------------------------------
+      * Returns: nothing
+    */
     void play_game() {
       writeln("Welcome to TWODUKO!");
 
