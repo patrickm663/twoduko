@@ -45,13 +45,14 @@ Players win when their opponent cannot make a legal move, or there are no empty 
 
 ## TODO
 - [ ] Pretty-print the gameboard
-- [x] Add a Dockerfile so Dub isn't a requirement
 - [ ] Colour-code player moves to make it easier to track
 - [ ] Update the board printout logic to support nxm grids
 - [ ] Begin work on an 'AI' that doesn't just make random moves
 - [ ] Compile to WASM and create a web frontend
 - [ ] Add the option to play another human and select who starts first
 - [ ] Add some unit tests
+- [ ] Perform linting
+- [x] Add a Dockerfile so Dub isn't a requirement
 
 ## License
 MIT.
