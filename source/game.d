@@ -6,6 +6,8 @@ import std.string;
 
 class twoduko {
   private:
+    bool is_complete;
+    bool is_valid;
     int[][] board;
     int x;
     int y;
@@ -51,21 +53,6 @@ class twoduko {
 	}
       }
       return(true);
-    }
-
-
-  public:
-    bool is_complete;
-    bool is_valid;
-    
-    this(int x, int y) {
-      this.x = x;
-      this.y = y;
-      this.sq_x = to!int(sqrt(to!float(this.x)));
-      this.sq_y = to!int(sqrt(to!float(this.y)));
-      this.is_complete = false;
-      this.is_valid = false;
-      this.board = new int[][](this.x, this.y);
     }
 
     bool check_is_complete() {
@@ -176,4 +163,52 @@ class twoduko {
       writeln();
     }
 
+  public:
+    
+    this(int x, int y) {
+      this.x = x;
+      this.y = y;
+      this.sq_x = to!int(sqrt(to!float(this.x)));
+      this.sq_y = to!int(sqrt(to!float(this.y)));
+      this.is_complete = false;
+      this.is_valid = false;
+      this.board = new int[][](this.x, this.y);
+    }
+
+    void play_game() {
+      writeln("Welcome to TWODUKO!");
+
+      this.display_board();
+
+      //Play game
+      while(!this.is_complete){
+	//Human move
+	writeln("PLAYER MOVE");
+	while(!this.is_valid) {
+	  this.set_player_move();
+	}
+
+	this.display_board();
+	this.is_valid = false;
+	if(this.check_is_complete()){
+	  this.is_complete = true;
+	  this.display_board();
+	  writeln("YOU WIN!");
+	  break;
+	}
+
+	//CPU move
+	writeln("CPU MOVE");
+	this.set_cpu_move();
+	this.display_board();
+
+	if(this.check_is_complete()){
+	  this.is_complete = true;
+	  this.display_board();
+	  writeln("YOU LOSE!");
+	  break;
+	}
+      }
+      writeln("GAME OVER");
+    }
 }
