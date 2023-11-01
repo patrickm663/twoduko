@@ -51,7 +51,7 @@ Players win when their opponent cannot make a legal move, or there are no empty 
 - [ ] Compile to WASM and create a web frontend
 - [ ] Add the option to play another human and select who starts first
 - [ ] Add some unit tests
-- [ ] Perform linting
+- [x] Perform linting
 - [x] Add a Dockerfile so Dub isn't a requirement
 
 ## License
