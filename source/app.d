@@ -1,3 +1,8 @@
+/**
+  * Author: Patrick Moehrke
+  * License: MIT
+*/
+
 import std.stdio;
 import game;
 
