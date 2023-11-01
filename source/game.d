@@ -9,13 +9,10 @@ class twoduko {
     bool is_complete;
     bool is_valid;
     int[][] board;
-    int x;
-    int y;
-    int sq_x;
-    int sq_y;
-    int play;
-    int x_move;
-    int y_move;
+    const int x;
+    const int y;
+    const int sq_x;
+    const int sq_y;
     auto rng = Random();
 
     void play_move(int p_move, int x_move, int y_move) {
@@ -41,10 +38,11 @@ class twoduko {
     }
 
     bool grid_valid(int p_move, int x_move, int y_move) {
-      int start_grid_x = x_move - (x_move % this.sq_x);
-      int end_grid_x = start_grid_x + (this.sq_x - 1);
-      int start_grid_y = y_move - (y_move % this.sq_y);
-      int end_grid_y = start_grid_y + (this.sq_y - 1);
+      const int start_grid_x = x_move - (x_move % this.sq_x);
+      const int end_grid_x = start_grid_x + (this.sq_x - 1);
+      const int start_grid_y = y_move - (y_move % this.sq_y);
+      const int end_grid_y = start_grid_y + (this.sq_y - 1);
+
       for(int i = start_grid_x; i <= end_grid_x; i++) {
 	for(int j = start_grid_y; j <= end_grid_y; j++) {
 	  if (p_move == this.board[i][j]) {
@@ -74,7 +72,10 @@ class twoduko {
 
     bool is_valid_move(int p_move, int x_move, int y_move) {
       if (0 < p_move && p_move <= this.x && 0 <= x_move && x_move < this.x && 0 <= y_move && y_move <= this.y) {
-	if(this.board[x_move][y_move] == 0 && this.horizontal_valid(p_move, x_move) && this.vertical_valid(p_move, y_move) && this.grid_valid(p_move, x_move, y_move)) {
+	if(this.board[x_move][y_move] == 0 
+	    && this.horizontal_valid(p_move, x_move) 
+	    && this.vertical_valid(p_move, y_move) 
+	    && this.grid_valid(p_move, x_move, y_move)) {
 	  return(true);
 	}
       } 
